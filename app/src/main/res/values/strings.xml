@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">MaoGou</string>
+    <string name="app_name">Cat Cake</string>
+    <string name="author_sentence">Made By Vocaloid2048</string>
+    <string name="want_a_cat_cake">Want a Cat Cake?</string>
+    <string name="image_sentence">Cat Cake Images are copyrighted images of miHoYo</string>
+    <string name="random_btn_tv">Random!</string>
 </resources>
