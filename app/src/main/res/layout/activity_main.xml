@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#1E1E1E"
+    android:background="@color/appBgColor"
     tools:context=".MainActivity">
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="要生成一個貓糕嗎？"
+        android:text="Wanna a Cat Cake?"
         android:textColor="@color/white"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/maogou_display"
@@ -23,9 +23,9 @@
         android:id="@+id/maogou_display"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="64dp"
+        android:layout_marginStart="96dp"
         android:layout_marginTop="64dp"
-        android:layout_marginEnd="64dp"
+        android:layout_marginEnd="96dp"
         app:cardBackgroundColor="#505050"
         app:cardCornerRadius="16dp"
         app:cardElevation="6dp"
@@ -39,59 +39,90 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <ImageView
-                android:id="@+id/maogou_body_img"
+            <FrameLayout
+                android:id="@+id/maogou_merge"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:adjustViewBounds="true"
-                app:srcCompat="@drawable/maogou_body6" />
+                android:layout_height="match_parent">
 
-            <ImageView
-                android:id="@+id/maogou_eyes_img"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:adjustViewBounds="true"
-                app:srcCompat="@drawable/maogou_eye3" />
+                <ImageView
+                    android:id="@+id/maogou_body_img"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:adjustViewBounds="true"
+                    app:srcCompat="@drawable/maogou_body6" />
 
-            <ImageView
-                android:id="@+id/maogou_fur_img"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:adjustViewBounds="true" />
+                <ImageView
+                    android:id="@+id/maogou_fur_img"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:adjustViewBounds="true" />
 
-            <ImageView
-                android:id="@+id/maogou_head_img"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:adjustViewBounds="true"
-                app:srcCompat="@drawable/maogou_head5" />
+                <ImageView
+                    android:id="@+id/maogou_eyes_img"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:adjustViewBounds="true"
+                    app:srcCompat="@drawable/maogou_eye3" />
 
-            <ImageView
-                android:id="@+id/maogou_tail_img"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:adjustViewBounds="true" />
+                <ImageView
+                    android:id="@+id/maogou_kwang"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/maogou_line" />
 
-            <ImageView
-                android:id="@+id/maogou_sticker_img"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:adjustViewBounds="true" />
+                <ImageView
+                    android:id="@+id/maogou_head_img"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:adjustViewBounds="true"
+                    app:srcCompat="@drawable/maogou_head5" />
+
+                <ImageView
+                    android:id="@+id/maogou_tail_img"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:adjustViewBounds="true" />
+
+                <ImageView
+                    android:id="@+id/maogou_sticker_img"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:adjustViewBounds="true" />
+
+                <ImageView
+                    android:id="@+id/maogou_special"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:adjustViewBounds="true" />
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/maogou_id_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|left"
+                android:layout_margin="4dp"
+                android:background="@drawable/bg_round"
+                android:padding="4dp"
+                android:text="502400"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/maogou_download_btn"
                 android:layout_width="36dp"
                 android:layout_height="36dp"
                 android:layout_gravity="bottom|right"
-                android:layout_margin="8dp"
-                app:cardBackgroundColor="#777777"
+                android:layout_margin="4dp"
+                android:clickable="true"
+                android:foreground="?android:attr/selectableItemBackground"
+                app:cardBackgroundColor="@color/displayBgColor"
                 app:cardCornerRadius="16dp">
 
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="?android:attr/selectableItemBackground"
-                    android:clickable="true"
                     android:padding="4dp"
                     android:src="@drawable/round_download_24" />
             </androidx.cardview.widget.CardView>
@@ -124,7 +155,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_margin="8dp"
-                android:orientation="horizontal"></LinearLayout>
+                android:orientation="horizontal">
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/divider"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:background="@drawable/item_divider_round" />
 
             <LinearLayout
                 android:id="@+id/maogou_eyes_ll"
@@ -133,12 +174,28 @@
                 android:layout_margin="8dp"
                 android:orientation="horizontal"></LinearLayout>
 
+            <View
+                android:id="@+id/divider2"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:background="@drawable/item_divider_round" />
+
             <LinearLayout
                 android:id="@+id/maogou_fur_ll"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_margin="8dp"
                 android:orientation="horizontal"></LinearLayout>
+
+            <View
+                android:id="@+id/divider3"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:background="@drawable/item_divider_round" />
 
             <LinearLayout
                 android:id="@+id/maogou_head_ll"
@@ -147,6 +204,14 @@
                 android:layout_margin="8dp"
                 android:orientation="horizontal"></LinearLayout>
 
+            <View
+                android:id="@+id/divider4"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:background="@drawable/item_divider_round" />
+
             <LinearLayout
                 android:id="@+id/maogou_tail_ll"
                 android:layout_width="match_parent"
@@ -154,12 +219,29 @@
                 android:layout_margin="8dp"
                 android:orientation="horizontal"></LinearLayout>
 
+            <View
+                android:id="@+id/divider5"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:background="@drawable/item_divider_round" />
+
             <LinearLayout
                 android:id="@+id/maogou_sticker_ll"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_margin="8dp"
                 android:orientation="horizontal"></LinearLayout>
+
+            <View
+                android:id="@+id/divider6"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:background="@drawable/item_divider_round" />
+
         </LinearLayout>
     </ScrollView>
 
@@ -168,7 +250,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:text="隨機生成一個吧"
+        android:backgroundTint="@color/buttonBgColor"
+        android:text="Random !"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -2,4 +2,8 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="appBgColor">#1E1E1E</color>
+    <color name="buttonBgColor">#515151</color>
+    <color name="dividerColor">#5BCACACA</color>
+    <color name="displayBgColor">#777777</color>
 </resources>
