@@ -19,7 +19,7 @@
 從以前的 Java 代碼，轉到現在的 Kotlin 代碼 ~ 還是蠻順手的<br>
 （前提是不用響應式介面 XD）
 
-<a href="https://www.buymeacoffee.com/codingband"><img src="https://img.buymeacoffee.com/button-api/?text=Support Us&emoji=☕&slug=codingband&button_colour=ff76ac&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=FFDD00" /></a>
+<a href="https://www.buymeacoffee.com/vocaloid2048"><img src="https://img.buymeacoffee.com/button-api/?text=Support Me&emoji=🐱&slug=vocaloid2048&button_colour=ff76ac&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=FFDD00" /></a>
 
 ### # 貓糕圖片版權由米哈遊擁有，MaauGou 專案代碼由 Vocaloid2048 擁有
 
@@ -40,6 +40,8 @@
 | ![貓糕主頁](readme/image.png) | ![使用示範](readme/demo.gif) |
 
 ### <span style="color:#FF99CC">關於 Coding Band
+
+<a href="https://www.buymeacoffee.com/codingband"><img src="https://img.buymeacoffee.com/button-api/?text=Support Us&emoji=☕&slug=codingband&button_colour=ff76ac&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=FFDD00" /></a>
 
 Coding Band 由 4 位核心成員組成,分別是 :<br>
 
