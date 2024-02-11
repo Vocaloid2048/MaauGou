@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">貓糕</string>
+    <string name="author_sentence">由Vocaloid2048製作</string>
+    <string name="random_btn_tv">隨機組合吧！</string>
+    <string name="want_a_cat_cake">要來一份貓糕嗎？</string>
+    <string name="image_sentence">貓糕圖片版權由米哈遊擁有</string>
+</resources>
