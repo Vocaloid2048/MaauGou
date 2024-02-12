@@ -1,4 +1,4 @@
-package com.voc2048.maogou
+package com.voc2048.maogou.ui
 
 import android.Manifest
 import android.app.Activity
@@ -31,6 +31,8 @@ import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.core.view.children
 import com.squareup.picasso.Picasso
+import com.voc2048.maogou.R
+import com.voc2048.maogou.data.MaoGou
 import java.util.Date
 import java.util.Objects
 import kotlin.math.roundToInt
@@ -43,20 +45,6 @@ class MainActivity : AppCompatActivity() {
     private var isReadPermissionGranted = false
     private var isWritePermissionGranted = false
     private lateinit var displayMetrics: DisplayMetrics
-    val maogouBodyArr: Array<Int> = arrayOf(R.drawable.maogou_body1,R.drawable.maogou_body2,R.drawable.maogou_body3,R.drawable.maogou_body4,R.drawable.maogou_body5,R.drawable.maogou_body6)
-    val maogouHeadArr: Array<Int> = arrayOf(R.drawable.maogou_head1,R.drawable.maogou_head2,R.drawable.maogou_head3,R.drawable.maogou_head4,R.drawable.maogou_head5,R.drawable.maogou_head6,R.drawable.maogou_head7)
-    val maogouFurArr: Array<Int> = arrayOf(R.drawable.bg_transparent,R.drawable.maogou_face1,R.drawable.maogou_face2,R.drawable.maogou_face3,R.drawable.maogou_face4,R.drawable.maogou_face5)
-    val maogouTailArr: Array<Int> = arrayOf(R.drawable.bg_transparent,R.drawable.maogou_tail1,R.drawable.maogou_tail2,R.drawable.maogou_tail3,R.drawable.maogou_tail4,R.drawable.maogou_tail5)
-    val maogouStickerArr: Array<Int> = arrayOf(R.drawable.bg_transparent,R.drawable.maogou_hat1,R.drawable.maogou_hat2,R.drawable.maogou_hat3,R.drawable.maogou_hat4,R.drawable.maogou_hat5)
-    val maogouEyesArr: Array<Int> = arrayOf(R.drawable.maogou_eye1,R.drawable.maogou_eye2,R.drawable.maogou_eye3,R.drawable.maogou_eye4,R.drawable.maogou_eye5,R.drawable.maogou_eye6)
-    val maogouSpecialArr: Array<Int> = arrayOf(R.drawable.maogou_blade,R.drawable.maogou_clara,R.drawable.maogou_dan_heng,R.drawable.maogou_guinaifen,R.drawable.maogou_herta,R.drawable.maogou_kafka,R.drawable.maogou_march_7th,R.drawable.maogou_qingque,R.drawable.maogou_ruan_mei,R.drawable.maogou_trailblazer)
-
-    val maogouBodyUIArr: Array<Int> = arrayOf(R.drawable.maogou_body1_ui,R.drawable.maogou_body2_ui,R.drawable.maogou_body3_ui,R.drawable.maogou_body4_ui,R.drawable.maogou_body5_ui,R.drawable.maogou_body6_ui)
-    val maogouHeadUIArr: Array<Int> = arrayOf(R.drawable.maogou_head1_ui,R.drawable.maogou_head2_ui,R.drawable.maogou_head3_ui,R.drawable.maogou_head4_ui,R.drawable.maogou_head5_ui,R.drawable.maogou_head6_ui,R.drawable.maogou_head7_ui)
-    val maogouFurUIArr: Array<Int> = arrayOf(R.drawable.baseline_do_not_disturb_24,R.drawable.maogou_face1_ui,R.drawable.maogou_face2_ui,R.drawable.maogou_face3_ui,R.drawable.maogou_face4_ui,R.drawable.maogou_face5_ui)
-    val maogouTailUIArr: Array<Int> = arrayOf(R.drawable.baseline_do_not_disturb_24,R.drawable.maogou_tail1_ui,R.drawable.maogou_tail2_ui,R.drawable.maogou_tail3_ui,R.drawable.maogou_tail4_ui,R.drawable.maogou_tail5_ui)
-    val maogouStickerUIArr: Array<Int> = arrayOf(R.drawable.baseline_do_not_disturb_24,R.drawable.maogou_hat1_ui,R.drawable.maogou_hat2_ui,R.drawable.maogou_hat3_ui,R.drawable.maogou_hat4_ui,R.drawable.maogou_hat5_ui)
-    val maogouEyesUIArr: Array<Int> = arrayOf(R.drawable.maogou_eye1_ui,R.drawable.maogou_eye2_ui,R.drawable.maogou_eye3_ui,R.drawable.maogou_eye4_ui,R.drawable.maogou_eye5_ui,R.drawable.maogou_eye6_ui)
 
     lateinit var maogou_body_img : ImageView
     lateinit var maogou_eyes_img : ImageView
@@ -75,8 +63,8 @@ class MainActivity : AppCompatActivity() {
     lateinit var maogou_rand_gen_btn : Button
     lateinit var maogou_save_btn : CardView
     lateinit var maogou_id_tv : TextView
-    var maogouSelectionArray = arrayOf(5,2,0,4,0,0) //Body, Eyes, Fur, Head, Tail, Sticker
-    val maogouArray = arrayOf(maogouBodyArr,maogouEyesArr,maogouFurArr,maogouHeadArr,maogouTailArr,maogouStickerArr) //Body, Eyes, Fur, Head, Tail, Sticker
+
+    var maogouNow : MaoGou = MaoGou(5,2,0,4,0,0,520400)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -104,12 +92,12 @@ class MainActivity : AppCompatActivity() {
         maogou_id_tv = findViewById<TextView>(R.id.maogou_id_tv)
 
         //initialize list of maogou's part
-        addMaogouInLL(maogou_body_ll,maogouBodyUIArr,maogouBodyArr,0,maogou_body_img)
-        addMaogouInLL(maogou_eyes_ll,maogouEyesUIArr,maogouEyesArr,1,maogou_eyes_img)
-        addMaogouInLL(maogou_fur_ll,maogouFurUIArr,maogouFurArr,2,maogou_fur_img)
-        addMaogouInLL(maogou_head_ll,maogouHeadUIArr,maogouHeadArr,3,maogou_head_img)
-        addMaogouInLL(maogou_tail_ll,maogouTailUIArr,maogouTailArr,4,maogou_tail_img)
-        addMaogouInLL(maogou_sticker_ll,maogouStickerUIArr,maogouStickerArr,5,maogou_sticker_img)
+        addMaogouInLL(maogou_body_ll,MaoGou.MaoGouType.BODY,maogou_body_img)
+        addMaogouInLL(maogou_eyes_ll,MaoGou.MaoGouType.EYES,maogou_eyes_img)
+        addMaogouInLL(maogou_fur_ll,MaoGou.MaoGouType.FUR,maogou_fur_img)
+        addMaogouInLL(maogou_head_ll,MaoGou.MaoGouType.HEAD,maogou_head_img)
+        addMaogouInLL(maogou_tail_ll,MaoGou.MaoGouType.TAIL,maogou_tail_img)
+        addMaogouInLL(maogou_sticker_ll,MaoGou.MaoGouType.STICKER,maogou_sticker_img)
 
         //initialize maogou random button
         maogou_rand_gen_btn.setOnClickListener{
@@ -136,13 +124,13 @@ class MainActivity : AppCompatActivity() {
             val maogouLLArray = arrayOf(maogou_body_ll,maogou_eyes_ll,maogou_fur_ll,maogou_head_ll,maogou_tail_ll,maogou_sticker_ll) //Body, Eyes, Fur, Head, Tail, Sticker
             for (linearlayout in maogouLLArray){
                 for(child in linearlayout.children){
-                    child.alpha = if(linearlayout.indexOfChild(child) == maogouSelectionArray[maogouLLArray.indexOf(linearlayout)]){1f} else 0.2f
+                    child.alpha = if(linearlayout.indexOfChild(child) == maogouNow.getMaoGouPartValue(maogouLLArray.indexOf(linearlayout))){1f} else 0.2f
                 }
             }
 
             //Check whether user got the 1% of showing rare maogou
             if(Random.nextDouble(0.0,1.0) >= 0.99){
-                maogou_special.setImageResource(maogouSpecialArr[Random(System.currentTimeMillis()).nextInt(maogouSpecialArr.size)])
+                maogou_special.setImageResource(MaoGou.getMaoGouSpecialArray()[Random(System.currentTimeMillis()).nextInt(MaoGou.getMaoGouSpecialArray().size)])
             }else{
                 maogou_special.setImageResource(R.drawable.bg_transparent)
             }
@@ -151,24 +139,31 @@ class MainActivity : AppCompatActivity() {
         };
 
         //Randomize and save the record of each maogou parts
-        for (index in maogouSelectionArray.indices){
-            maogouSelectionArray[index] = Random(System.currentTimeMillis()+index*1024).nextInt(maogouArray[index].size)
+        for (index in 0..5){
+            maogouNow.setMaoGouPartValue(index,  Random(System.currentTimeMillis()+index*1024).nextInt(MaoGou.getMaoGouImageArray()[index].size))
         }
 
+        //Refresh maogou's id
+        maogouNow.updateMaoGouId()
+
         //Randomizing, the main ImageView must show each randomize result
+        val maogouArrays = MaoGou.getMaoGouImageArray()
         maogou_special.setImageResource(R.drawable.bg_transparent)
-        maogou_body_img.setImageResource(maogouBodyArr[maogouSelectionArray[0]])
-        maogou_eyes_img.setImageResource(maogouEyesArr[maogouSelectionArray[1]])
-        maogou_fur_img.setImageResource(maogouFurArr[maogouSelectionArray[2]])
-        maogou_head_img.setImageResource(maogouHeadArr[maogouSelectionArray[3]])
-        maogou_tail_img.setImageResource(maogouTailArr[maogouSelectionArray[4]])
-        maogou_sticker_img.setImageResource(maogouStickerArr[maogouSelectionArray[5]])
+        maogou_body_img.setImageResource(maogouArrays[0][maogouNow.body])
+        maogou_eyes_img.setImageResource(maogouArrays[1][maogouNow.eyes])
+        maogou_fur_img.setImageResource(maogouArrays[2][maogouNow.fur])
+        maogou_head_img.setImageResource(maogouArrays[3][maogouNow.head])
+        maogou_tail_img.setImageResource(maogouArrays[4][maogouNow.tail])
+        maogou_sticker_img.setImageResource(maogouArrays[5][maogouNow.sticker])
         Handler().postDelayed({
             randomMaoGou(loopTimes + 1, targetTimes)
         },20)
     }
 
-    fun addMaogouInLL(maogouLL : LinearLayout, maogouUIArr : Array<Int>,maogouArr : Array<Int>, maogouPartIndex : Int, displayImage : ImageView){
+    fun addMaogouInLL(maogouLL : LinearLayout, maoGouType: MaoGou.MaoGouType, displayImage : ImageView){
+        val maogouUIArr = MaoGou.findMaoGouUIIDByType(maoGouType)
+        val maogouArr = MaoGou.findMaoGouImageIDByType(maoGouType)
+        val maogouPartIndex = maoGouType.ordinal
         //init layoutParams
         var layoutParams = LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT)
         var widthOfIcons = (
@@ -193,18 +188,19 @@ class MainActivity : AppCompatActivity() {
                 .centerInside()
                 .error(R.drawable.baseline_do_not_disturb_24)
                 .into(uiImage)
-            uiImage.alpha = 0.2f
+
             uiImage.setOnClickListener {
                 displayImage.setImageDrawable(context.getDrawable(maogouArr[maogouUIArr.indexOf(maogouUI)]))
-                maogouSelectionArray[maogouPartIndex] = maogouUIArr.indexOf(maogouUI)
+                maogouNow.setMaoGouPartValue(maogouPartIndex, maogouUIArr.indexOf(maogouUI))
                 for (maogouView in maogouLL.children){
                     maogouView.alpha = 0.2f
                 }
                 uiImage.alpha = 1f
-
                 updateMaogouId()
             }
-            if(maogouSelectionArray[maogouPartIndex] == maogouUIArr.indexOf(maogouUI)){
+
+            uiImage.alpha = 0.2f
+            if(maogouNow.getMaoGouPartValue(maogouPartIndex) == maogouUIArr.indexOf(maogouUI)){
                 uiImage.alpha = 1f
             }
 
@@ -215,11 +211,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun updateMaogouId(){
-        var id : String = ""
-        for (value in maogouSelectionArray){
-            id += value.toString()
-        }
-        maogou_id_tv.setText(id);
+        maogouNow.updateMaoGouId()
+        maogou_id_tv.text = (if(maogouNow.maoGouId < 100000){"0"} else "") + maogouNow.maoGouId.toString();
     }
 
 

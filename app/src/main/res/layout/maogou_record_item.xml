@@ -1,6 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/maogou_merge"
+    android:layout_width="96dp"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_kwang_round">
+
+
+    <ImageView
+        android:id="@+id/maogou_body_img"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:adjustViewBounds="true"
+        app:srcCompat="@drawable/maogou_body6" />
+
+    <ImageView
+        android:id="@+id/maogou_fur_img"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:adjustViewBounds="true" />
+
+    <ImageView
+        android:id="@+id/maogou_eyes_img"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:adjustViewBounds="true"
+        app:srcCompat="@drawable/maogou_eye3" />
+
+    <ImageView
+        android:id="@+id/maogou_kwang"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:adjustViewBounds="true"
+        android:src="@drawable/maogou_line" />
+
+    <ImageView
+        android:id="@+id/maogou_head_img"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:adjustViewBounds="true"
+        app:srcCompat="@drawable/maogou_head5" />
+
+    <ImageView
+        android:id="@+id/maogou_tail_img"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:adjustViewBounds="true" />
+
+    <ImageView
+        android:id="@+id/maogou_sticker_img"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:adjustViewBounds="true" />
+
+</FrameLayout>
